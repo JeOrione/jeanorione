@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jean Orione RINJANIAINA | Administrateur Système & Développeur Web</title>
+<meta name="description" content="Portfolio de Jean Orione RINJANIAINA : administration réseaux et systèmes, supervision, virtualisation et développement web.">
+<style>
+  :root{
+    --bg:#04070d; --bg2:#080d17; --card:#0b1220; --card2:#0e1627; --line:#18233a;
+    --text:#e9eef8; --muted:#8e9bb6; --accent:#2dd4bf; --accent2:#60a5fa;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:70px}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1080px,100% - 32px);margin-inline:auto}
+  section{padding:76px 0}
+  .alt{background:var(--bg2);border-block:1px solid var(--line)}
+  h2{font-size:clamp(1.6rem,3vw,2.1rem);letter-spacing:-.02em;margin-bottom:8px}
+  .kicker{color:var(--accent);font-weight:600;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+  .lead{color:var(--muted);max-width:64ch;margin-bottom:34px}
+
+  /* Navigation */
+  header{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);
+    background:color-mix(in srgb,var(--bg) 85%,transparent);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+  .logo{font-weight:800;letter-spacing:-.02em}
+  .logo span{color:var(--accent)}
+  nav ul{display:flex;gap:4px;list-style:none;flex-wrap:wrap;justify-content:flex-end}
+  nav a{display:block;padding:7px 12px;border-radius:999px;color:var(--muted);font-size:.9rem;font-weight:500}
+  nav a:hover{color:var(--text);background:var(--card)}
+
+  /* Accueil */
+  .hero{padding:96px 0 70px;
+    background:radial-gradient(900px 400px at 85% -10%,color-mix(in srgb,var(--accent) 14%,transparent),transparent 60%),
+               radial-gradient(700px 380px at -10% 10%,color-mix(in srgb,var(--accent2) 12%,transparent),transparent 60%)}
+  .tag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);
+    padding:6px 14px;border-radius:999px;font-size:.85rem;color:var(--muted);margin-bottom:22px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent)}
+  h1{font-size:clamp(1.9rem,7vw,3.8rem);line-height:1.08;letter-spacing:-.035em;margin-bottom:16px}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .role{font-size:clamp(1.05rem,2.2vw,1.35rem);color:var(--muted);margin-bottom:24px}
+  .pitch{max-width:64ch;color:var(--muted);margin-bottom:30px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;font-weight:600;font-size:.95rem;border:1px solid var(--line);transition:transform .15s,border-color .15s}
+  .btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+  .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#04101a;border-color:transparent}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:center}
+  .portrait{position:relative;isolation:isolate;justify-self:end;width:100%;max-width:340px;aspect-ratio:3/4;border-radius:28px;
+    padding:6px;background:linear-gradient(145deg,var(--accent),var(--accent2));
+    box-shadow:0 30px 70px -25px color-mix(in srgb,var(--accent) 45%,transparent)}
+  .portrait::after{content:"";position:absolute;inset:-14px -14px auto auto;width:90px;height:90px;border-radius:24px;
+    border:2px solid color-mix(in srgb,var(--accent2) 55%,transparent);z-index:-1}
+  .portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%;border-radius:23px;background:var(--card)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:14px;margin-top:46px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+  .stat b{display:block;font-size:1.4rem;letter-spacing:-.02em}
+  .stat span{color:var(--muted);font-size:.88rem}
+
+  /* Cartes */
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .card h3{font-size:1.08rem;margin-bottom:4px}
+  .card .sub{color:var(--muted);font-size:.9rem;margin-bottom:14px}
+  .icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;
+    background:color-mix(in srgb,var(--accent) 14%,var(--card2));margin-bottom:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:.84rem;padding:5px 12px;border-radius:999px;background:var(--card2);border:1px solid var(--line)}
+
+  /* Blocs d'outils avec explication */
+  .blocks{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))}
+  .block{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .block header{position:static;backdrop-filter:none;background:none;border:0;margin-bottom:14px}
+  .block h3{font-size:1.1rem}
+  .block .sub{color:var(--muted);font-size:.9rem}
+  .tools{display:grid;gap:0}
+  .tool{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--line);align-items:baseline}
+  .tool:first-child{border-top:0;padding-top:2px}
+  .tool b{color:var(--accent);font-size:.94rem;font-weight:600}
+  .tool span{color:var(--muted);font-size:.92rem;line-height:1.5}
+
+  /* Projets */
+  .project ul{margin:12px 0 16px 18px;color:var(--muted);font-size:.95rem}
+  .project li{margin-bottom:4px}
+  .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .links a{font-size:.88rem;font-weight:600;color:var(--accent);border-bottom:1px solid transparent}
+  .links a:hover{border-color:var(--accent)}
+
+  /* Parcours */
+  .timeline{border-left:2px solid var(--line);padding-left:26px;display:grid;gap:26px}
+  .item{position:relative}
+  .item::before{content:"";position:absolute;left:-34px;top:7px;width:14px;height:14px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--accent)}
+  .item .when{color:var(--accent);font-weight:600;font-size:.88rem}
+  .item h3{font-size:1.1rem;margin:2px 0}
+  .item .where{color:var(--muted);font-size:.93rem;margin-bottom:8px}
+  .item ul{margin-left:18px;color:var(--muted);font-size:.95rem}
+  .item li{margin-bottom:4px}
+  .two{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+  h3.part{font-size:1.15rem;margin-bottom:20px}
+
+  /* Contact */
+  .contact-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));margin-top:10px}
+  .contact-grid a,.contact-grid div{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+  .contact-grid a:hover{border-color:var(--accent)}
+  .contact-grid small{display:block;color:var(--muted);font-size:.8rem;margin-bottom:2px}
+  .contact-grid b{word-break:break-word}
+
+  footer.site{text-align:center;color:var(--muted);font-size:.88rem;padding:26px 16px;border-top:1px solid var(--line)}
+
+  /* Bouton menu (mobile) */
+  .menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--card);
+    cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+  .menu-btn span{display:block;width:20px;height:2px;border-radius:2px;background:var(--text);transition:transform .25s,opacity .2s}
+  .menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* Sécurité de mise en page */
+  body{overflow-x:hidden}
+  img,svg{max-width:100%;height:auto}
+  .grid>*,.blocks>*,.two>*,.contact-grid>*{min-width:0}
+  .contact-grid b,.tool span,.lead,.pitch{overflow-wrap:anywhere}
+  a,button{-webkit-tap-highlight-color:transparent}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important}
+  }
+
+  /* Tablette */
+  @media (max-width:900px){
+    .blocks{grid-template-columns:1fr}
+    .two{gap:34px}
+    .hero-grid{grid-template-columns:minmax(0,1fr) 260px;gap:34px}
+  }
+
+  /* Mobile : menu déroulant */
+  @media (max-width:760px){
+    section{padding:56px 0}
+    .hero{padding:56px 0 44px}
+    .menu-btn{display:flex}
+    .hero-grid{grid-template-columns:1fr;gap:32px}
+    .portrait{order:-1;justify-self:center;max-width:230px}
+    .hero-text{text-align:left}
+    nav{position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);
+      max-height:0;overflow:hidden;transition:max-height .3s ease}
+    nav.open{max-height:420px}
+    nav ul{flex-direction:column;gap:2px;padding:10px 16px 16px;width:min(1080px,100%);margin-inline:auto}
+    nav a{padding:13px 14px;font-size:1rem;border-radius:12px}
+    .stats{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:34px}
+    .stat{padding:14px}
+    .stat b{font-size:1.15rem}
+    .btns .btn{flex:1 1 100%;justify-content:center}
+    .card,.block{padding:20px}
+    .tool{grid-template-columns:104px 1fr;gap:12px}
+    .timeline{padding-left:22px}
+    .item::before{left:-30px}
+  }
+
+  /* Petit mobile */
+  @media (max-width:420px){
+    .wrap{width:calc(100% - 24px)}
+    .stats{grid-template-columns:1fr}
+    .tool{grid-template-columns:1fr;gap:2px;padding:12px 0}
+    .tool b{font-size:.95rem}
+    .contact-grid{grid-template-columns:1fr}
+    .tag{font-size:.78rem;padding:6px 12px}
+  }
+
+  /* Grand écran */
+  @media (min-width:1400px){
+    .wrap{width:min(1200px,100% - 64px)}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#accueil">Jean Orione<span>.</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#reseau">Côté Réseau</a></li>
+        <li><a href="#dev">Côté Dev</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#parcours">Parcours</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ACCUEIL -->
+  <section class="hero" id="accueil">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="tag"><span class="dot"></span> Réseaux · Systèmes · Développement web</div>
+          <h1>Jean Orione <em>RINJANIAINA</em></h1>
+          <p class="role">Administrateur Système &amp; Développeur Web</p>
+          <p class="pitch">Diplômé DTS Réseaux (USVPA, 2026), je conçois, sécurise et supervise des infrastructures réseau, puis je développe et déploie des applications web de bout en bout : base de données, API et interface en ligne.</p>
+          <div class="btns">
+            <a class="btn primary" href="#projets">Voir mes projets</a>
+            <a class="btn" href="#contact">Me contacter</a>
+          </div>
+        </div>
+        <figure class="portrait">
+          <img src="photo.jpg" width="720" height="960" alt="Portrait de Jean Orione RINJANIAINA en costume" fetchpriority="high">
+        </figure>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>DTS 2026</b><span>Réseaux informatiques, USVPA</span></div>
+        <div class="stat"><b>6 mois</b><span>Administrateur réseau et système au MCC</span></div>
+        <div class="stat"><b>Réseau + Web</b><span>Du serveur jusqu'au site en ligne</span></div>
+        <div class="stat"><b>À distance</b><span>VPN, SSH, supervision, travail par ticket</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A PROPOS -->
+  <section id="apropos">
+    <div class="wrap">
+      <div class="kicker">À propos</div>
+      <h2>Réseaux, systèmes et web</h2>
+      <p class="lead">Je suis spécialisé dans l'administration à distance : VPN Tailscale et WireGuard, accès SSH, supervision avec Zabbix et Grafana, serveurs Linux, virtualisation avec Proxmox et VirtualBox. Côté développement, je crée des sites et des applications web, et je les mets en ligne moi-même.</p>
+      <div class="grid">
+        <div class="card"><div class="icon">🛰️</div><h3>Autonome à distance</h3><p class="sub">Équipé fibre et PC, habitué au travail par ticket et en visioconférence.</p></div>
+        <div class="card"><div class="icon">🛡️</div><h3>Sécurité des accès</h3><p class="sub">Sécurisation des serveurs avec SSH et SSL, accès réseau protégés par VPN.</p></div>
+        <div class="card"><div class="icon">🚀</div><h3>Du code à la mise en ligne</h3><p class="sub">Déploiement sur Vercel et Render, code sur GitHub, données sur MySQL et Redis.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COTE RESEAU -->
+  <section class="alt" id="reseau">
+    <div class="wrap">
+      <div class="kicker">Côté Réseau</div>
+      <h2>Infrastructure, sécurité et supervision</h2>
+      <p class="lead">Installer, sécuriser et surveiller un réseau. Chaque outil est accompagné de son rôle.</p>
+
+      <div class="blocks">
+        <div class="block">
+          <header><h3>Virtualisation &amp; serveurs</h3><p class="sub">Héberger plusieurs systèmes sur peu de matériel</p></header>
+          <div class="tools">
+            <div class="tool"><b>Proxmox</b><span>Plateforme de virtualisation : gestion des machines virtuelles (VM), des conteneurs et des serveurs depuis une seule interface web.</span></div>
+            <div class="tool"><b>Virtualisation</b><span>Faire tourner plusieurs systèmes sur une même machine physique pour mieux exploiter le matériel.</span></div>
+            <div class="tool"><b>VirtualBox</b><span>Création de machines virtuelles sur un poste de travail, pour les tests et les laboratoires.</span></div>
+            <div class="tool"><b>Nginx</b><span>Serveur web : publie les sites et sert de point d'entrée aux applications.</span></div>
+            <div class="tool"><b>Samba</b><span>Partage de fichiers en réseau entre machines Linux et Windows.</span></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <header><h3>Services réseau</h3><p class="sub">Faire communiquer les machines</p></header>
+          <div class="tools">
+            <div class="tool"><b>DHCP</b><span>Attribue automatiquement une adresse IP à chaque machine du réseau.</span></div>
+            <div class="tool"><b>DNS</b><span>Traduit les noms de domaine en adresses IP.</span></div>
+            <div class="tool"><b>Proxy</b><span>Intermédiaire qui contrôle et filtre les accès web du réseau.</span></div>
+            <div class="tool"><b>MikroTik</b><span>Routeurs et équipements réseau : routage, gestion du trafic et surveillance du réseau.</span></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <header><h3>Accès à distance &amp; sécurité</h3><p class="sub">Se connecter et protéger les échanges</p></header>
+          <div class="tools">
+            <div class="tool"><b>VPN</b><span>Réseau privé chiffré qui relie des sites et des machines à distance.</span></div>
+            <div class="tool"><b>Tailscale</b><span>VPN simple à déployer, basé sur WireGuard, pour relier les machines de façon sécurisée.</span></div>
+            <div class="tool"><b>WireGuard</b><span>Protocole VPN rapide et léger, avec un chiffrement moderne.</span></div>
+            <div class="tool"><b>SSH</b><span>Connexion sécurisée en ligne de commande à un serveur distant.</span></div>
+            <div class="tool"><b>SSL</b><span>Chiffrement des échanges (HTTPS) pour protéger l'accès aux services.</span></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <header><h3>Supervision &amp; administration</h3><p class="sub">Surveiller et garder la main sur les serveurs</p></header>
+          <div class="tools">
+            <div class="tool"><b>Zabbix</b><span>Outil de supervision : surveille l'état des serveurs et du réseau, et envoie des alertes en cas de problème.</span></div>
+            <div class="tool"><b>Grafana</b><span>Tableaux de bord visuels pour suivre les mesures en temps réel.</span></div>
+            <div class="tool"><b>Monitoring</b><span>Supervision continue de la disponibilité et des performances, assurée avec Zabbix et Grafana.</span></div>
+            <div class="tool"><b>Webmin</b><span>Interface web d'administration et de suivi d'un serveur Linux.</span></div>
+            <div class="tool"><b>Linux</b><span>Administration de serveurs : utilisateurs, droits d'accès et services.</span></div>
+            <div class="tool"><b>Windows</b><span>Windows 10 et Windows Server en environnement de laboratoire.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COTE DEV -->
+  <section id="dev">
+    <div class="wrap">
+      <div class="kicker">Côté Dev</div>
+      <h2>Du développement à la mise en ligne</h2>
+      <p class="lead">Compétences classées dans l'ordre d'une application : interface, serveur, données, puis déploiement.</p>
+
+      <div class="blocks">
+        <div class="block">
+          <header><h3>1 · Interface &amp; langages</h3><p class="sub">Ce que voit l'utilisateur</p></header>
+          <div class="tools">
+            <div class="tool"><b>HTML</b><span>Structure des pages web.</span></div>
+            <div class="tool"><b>CSS</b><span>Mise en forme et adaptation à tous les écrans.</span></div>
+            <div class="tool"><b>JavaScript</b><span>Interactivité des pages et logique de l'application.</span></div>
+            <div class="tool"><b>React</b><span>Bibliothèque pour construire des interfaces dynamiques.</span></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <header><h3>2 · Serveur &amp; API</h3><p class="sub">La logique côté serveur</p></header>
+          <div class="tools">
+            <div class="tool"><b>Node.js</b><span>Exécute JavaScript côté serveur pour créer des API.</span></div>
+            <div class="tool"><b>Socket.IO</b><span>Communication en temps réel entre le serveur et le navigateur.</span></div>
+            <div class="tool"><b>PHP</b><span>Pages dynamiques et traitements côté serveur.</span></div>
+            <div class="tool"><b>Python</b><span>Bases du langage, pour des scripts et de l'automatisation.</span></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <header><h3>3 · Données</h3><p class="sub">Stocker et retrouver l'information</p></header>
+          <div class="tools">
+            <div class="tool"><b>SQL</b><span>Langage pour interroger et modifier une base de données.</span></div>
+            <div class="tool"><b>MySQL</b><span>Base de données relationnelle pour les données durables.</span></div>
+            <div class="tool"><b>PostgreSQL</b><span>Base de données relationnelle robuste, riche en fonctionnalités.</span></div>
+            <div class="tool"><b>Redis</b><span>Mémoire très rapide, utilisée ici comme file d'attente de tâches.</span></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <header><h3>4 · Déploiement</h3><p class="sub">Mettre l'application en ligne</p></header>
+          <div class="tools">
+            <div class="tool"><b>GitHub</b><span>Hébergement et suivi des versions du code.</span></div>
+            <div class="tool"><b>Render</b><span>Hébergement du backend, de Redis et des sites statiques.</span></div>
+            <div class="tool"><b>Vercel</b><span>Hébergement de sites web et d'interfaces front-end.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top:18px">
+        <div class="card"><h3>Autres notions</h3><p class="sub">&nbsp;</p>
+          <div class="chips"><span class="chip">Intelligence artificielle</span><span class="chip">Algorithmique</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section class="alt" id="projets">
+    <div class="wrap">
+      <div class="kicker">Projets</div>
+      <h2>Réalisations</h2>
+      <p class="lead">Une application déployée en ligne, une infrastructure réseau et des travaux pratiques.</p>
+      <div class="grid">
+        <article class="card project">
+          <div class="icon">🔔</div>
+          <h3>Plateforme de notifications</h3>
+          <p class="sub">Application web full-stack déployée en production</p>
+          <ul>
+            <li>API Node.js avec temps réel (Socket.IO) et file d'attente de tâches (Redis)</li>
+            <li>Base de données MySQL hébergée dans le cloud</li>
+            <li>Backend sur Render, interface React en ligne</li>
+          </ul>
+          <div class="chips" style="margin-bottom:16px">
+            <span class="chip">Node.js</span><span class="chip">React</span><span class="chip">MySQL</span><span class="chip">Redis</span><span class="chip">Render</span>
+          </div>
+          <div class="links">
+            <a href="https://notif-platform.onrender.com" target="_blank" rel="noopener">Voir le site →</a>
+          </div>
+        </article>
+
+        <article class="card project">
+          <div class="icon">🌐</div>
+          <h3>Infrastructure réseau du MCC</h3>
+          <p class="sub">Ministère de la Communication et de la Culture</p>
+          <ul>
+            <li>Réseau complet avec VPN Tailscale et matériel MikroTik</li>
+            <li>Supervision Zabbix et Grafana</li>
+            <li>Serveurs DHCP, DNS et Samba, accès sécurisés par SSH et SSL</li>
+          </ul>
+          <div class="chips"><span class="chip">Tailscale</span><span class="chip">Zabbix</span><span class="chip">Grafana</span><span class="chip">MikroTik</span></div>
+        </article>
+
+        <article class="card project">
+          <div class="icon">🧪</div>
+          <h3>Travaux pratiques</h3>
+          <p class="sub">Environnement de laboratoire</p>
+          <ul>
+            <li>Adressage IP, DHCP, DNS, partage de fichiers en réseau</li>
+            <li>Windows 10 et Windows Server en laboratoire</li>
+            <li>Linux Ubuntu : création d'utilisateurs et gestion des droits</li>
+            <li>Montage et dépannage de PC, support utilisateurs</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCOURS -->
+  <section id="parcours">
+    <div class="wrap">
+      <div class="kicker">Parcours</div>
+      <h2>Expérience et formation</h2>
+      <p class="lead">&nbsp;</p>
+      <div class="two">
+        <div>
+          <h3 class="part">Expérience professionnelle</h3>
+          <div class="timeline">
+            <div class="item">
+              <div class="when">2026 · 6 mois</div>
+              <h3>Administrateur réseau et système</h3>
+              <div class="where">Ministère de la Communication et de la Culture (MCC), Madagascar</div>
+              <ul>
+                <li>Installation d'un réseau complet : VPN Tailscale, monitoring Zabbix/Grafana, serveurs DHCP, DNS et Samba, matériel MikroTik</li>
+                <li>Sécurisation des accès au serveur (SSH et SSL)</li>
+                <li>Aide aux utilisateurs : réseau, configuration IP/DHCP, maintenance des ordinateurs et imprimantes</li>
+                <li>Saisie de données et traitement de documents</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="part">Éducation</h3>
+          <div class="timeline">
+            <div class="item"><div class="when">2026</div><h3>DTS en réseaux informatiques</h3><div class="where">USVPA</div></div>
+            <div class="item"><div class="when">2025</div><h3>ECS</h3><div class="where">Étude de la langue française</div></div>
+            <div class="item"><div class="when">2023</div><h3>Baccalauréat série D (mention Assez bien)</h3><div class="where">Lycée Privé Luthérien Faratsiho</div></div>
+            <div class="item"><div class="when">2020</div><h3>BEPC</h3><div class="where">Lycée Catholique Saint Paul Faratsiho</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top:46px">
+        <div class="card"><h3>Langues</h3><p class="sub">&nbsp;</p>
+          <div class="chips"><span class="chip">Malagasy : natif</span><span class="chip">Français : intermédiaire</span><span class="chip">Anglais : technique</span></div></div>
+        <div class="card"><h3>Centres d'intérêt</h3><p class="sub">&nbsp;</p>
+          <div class="chips"><span class="chip">Actualités technologiques</span><span class="chip">Football : esprit d'équipe</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="alt" id="contact">
+    <div class="wrap">
+      <div class="kicker">Contact</div>
+      <h2>Une question, un projet ?</h2>
+      <p class="lead">Écris-moi : je réponds rapidement.</p>
+      <div class="contact-grid">
+        <a href="mailto:r12injaniaina01@gmail.com"><small>Email</small><b>r12injaniaina01@gmail.com</b></a>
+        <a href="tel:+261332658369"><small>Téléphone</small><b>+261 33 26 583 69</b></a>
+        <div><small>Localisation</small><b>Ambohimangakely, Antananarivo</b></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">© 2026 Jean Orione RINJANIAINA · Administrateur Système &amp; Développeur Web</footer>
+
+<script>
+  (function(){
+    var btn = document.getElementById('menuBtn');
+    var nav = document.getElementById('mainNav');
+    if(!btn || !nav) return;
+    function setOpen(open){
+      nav.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    }
+    btn.addEventListener('click', function(){ setOpen(!nav.classList.contains('open')); });
+    nav.addEventListener('click', function(e){ if(e.target.tagName === 'A') setOpen(false); });
+    window.addEventListener('resize', function(){ if(window.innerWidth > 760) setOpen(false); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
+  })();
+</script>
+
+</body>
+</html>
